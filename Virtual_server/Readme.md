@@ -77,6 +77,12 @@ sudo systemctl daemon-reload
 sudo systemctl enable "$SERVICENAME"
 echo "Creating service to autostart VM finished"
 ```
+## Change grub menu timeout while boot
+To skip grub menu on Ubuntu installed on lvm: 
+sudo echo "GRUB_DISABLE_OS_PROBER" >> "/etc/defaul/grub
+sudo update-grub
+https://www.how2shout.com/linux/how-to-change-the-grub-menu-timeout-at-boot/
+
 ## You are done!
 
 Not actual
