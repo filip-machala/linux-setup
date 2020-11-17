@@ -36,7 +36,7 @@ sudo systemctl restart ssh
 https://www.virtualbox.org/wiki/Linux_Downloads 
 ```Bash
 echo "Installing Virtualbox started"
-sudo echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian Focal contrib" >> /etc/apt/sources.list;
+sudo echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian eoan contrib" >> /etc/apt/sources.list;
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -;
 sudo apt-get update;
 sudo apt-get install virtualbox-6.1;
@@ -51,13 +51,14 @@ Create service and enable it. Please ensure that VM already exists.
 echo "Creating service to autostart VM started"
 echo "Input full VM name to create service";
 read SERVICENAME;
+USER=$(whoami)
 sudo echo "[Unit]
 Description=$SERVICENAME
 After=network.target virtualbox.service
 Before=runlevel2.target shutdown.target
  
 [Service]
-User=alexis
+User=$USER
 Group=vboxusers
 Type=forking
 Restart=no
